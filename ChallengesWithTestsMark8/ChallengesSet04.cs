@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 
 namespace ChallengesWithTestsMark8
 {
@@ -6,47 +7,160 @@ namespace ChallengesWithTestsMark8
     {
         public int AddEvenSubtractOdd(int[] numbers)
         {
-            throw new NotImplementedException();
+            int result = 0;
+
+            foreach (int number in numbers)
+            {
+                // if result is even
+                if (number % 2 == 0)
+                {
+                    result += number;
+                }
+                // if result is odd
+                else
+                {
+                    result -= number;
+                }
+            }
+
+            return result;
         }
 
         public int GetLengthOfShortestString(string str1, string str2, string str3, string str4)
         {
-            throw new NotImplementedException();
+            int minLength = str1.Length;
+
+            if (str2.Length < minLength)
+            {
+                minLength = str2.Length;
+            }
+
+            if (str3.Length < minLength)
+            {
+                minLength = str3.Length;
+            }
+
+            if (str4.Length < minLength)
+            { 
+                minLength = str4.Length;
+            }
+
+            return minLength;
         }
 
         public int GetSmallestNumber(int number1, int number2, int number3, int number4)
         {
-            throw new NotImplementedException();
+            int smallestNumber = number1;
+
+            if (number2 < smallestNumber)
+            {
+                smallestNumber = number2;
+            }
+
+            if (number3 < smallestNumber)
+            {
+                smallestNumber = number3;
+            }
+
+            if (number4 < smallestNumber)
+            {
+                smallestNumber = number4;
+            }
+
+            return smallestNumber;
         }
 
         public void ChangeBusinessNameTo_TrueCoders(Business biz)
         {
-            throw new NotImplementedException();
+            biz.Name = "TrueCoders";
         }
 
         public bool CouldFormTriangle(int sideLength1, int sideLength2, int sideLength3)
         {
-            throw new NotImplementedException();
+            bool canFormTriangle =
+                (sideLength1 + sideLength2 > sideLength3) &&
+                (sideLength1 + sideLength3 > sideLength2) &&
+                (sideLength2 + sideLength3 > sideLength1);
+
+            return canFormTriangle;
         }
 
         public bool IsStringANumber(string input)
         {
-            throw new NotImplementedException();
+            var isNumber = double.TryParse(input, out double number);
+
+            return isNumber;
         }
 
         public bool MajorityOfElementsInArrayAreNull(object[] objs)
         {
-            throw new NotImplementedException();
+            var amount = objs.Length;
+            var majority = (amount / 2) + 1;
+
+            var count = 0;
+
+            foreach (var obj in objs)
+            {
+                if (obj == null)
+                {
+                    count++;
+                }
+            }
+
+            if (count >= majority)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public double AverageEvens(int[] numbers)
         {
-            throw new NotImplementedException();
+            double sum = 0;
+            double count = 0;
+
+            if (numbers == null)
+            {
+                return 0;
+            }
+
+            foreach (var num in numbers)
+            {
+                if (num % 2 == 0)
+                {
+                    sum += num;
+                    count++;
+                }
+            }
+
+            if (count > 0)
+            {
+                return sum / count;
+            }
+            else
+            {
+                return 0;
+            }
         }
 
         public int Factorial(int number)
         {
-            throw new NotImplementedException();
+            var fact = 1;
+
+            if (number == 0)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
+            for (int i = number; i > 0; i--)
+            {
+                fact *= i;
+            }
+
+            return fact;
         }
     }
 }
