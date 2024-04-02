@@ -148,19 +148,27 @@ namespace ChallengesWithTestsMark8
 
         public int Factorial(int number)
         {
-            var fact = 1;
-
-            if (number == 0)
+            // do this because factorial is not defined for negative numbers
+            if (number < 0)
             {
                 throw new ArgumentOutOfRangeException();
             }
 
-            for (int i = number; i > 0; i--)
+            // factorial of 0 is defined to be 1
+            if (number == 0)
             {
-                fact *= i;
+                return 1;
             }
 
-            return fact;
+            int result = 1;
+
+            // loop from 1 to the number, multiplying the result by each number in this range
+            for (int i = 1; i <= number; i++)
+            {
+                result *= i;
+            }
+
+            return result;
         }
     }
 }
